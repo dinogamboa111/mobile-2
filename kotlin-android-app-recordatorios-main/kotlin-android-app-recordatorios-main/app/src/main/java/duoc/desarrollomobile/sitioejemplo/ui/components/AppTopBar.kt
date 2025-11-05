@@ -1,5 +1,6 @@
 package duoc.desarrollomobile.sitioejemplo.ui.components
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
@@ -15,13 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 
 /**
- * TopAppBar principal de la aplicación
- * Componente reutilizable con colores consistentes del tema
- *
- * @param title Título a mostrar en el AppBar
- * @param navigationIcon Icono de navegación opcional (usualmente flecha atrás)
- * @param onNavigationClick Acción al hacer clic en el icono de navegación
- * @param actions Composable para las acciones del AppBar (iconos a la derecha)
+ * TopAppBar principal de la aplicación con soporte Material 3
+ * Incluye gradiente, iconos y acciones opcionales
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,7 +28,6 @@ fun AppTopBar(
     onNavigationClick: (() -> Unit)? = null,
     actions: @Composable () -> Unit = {}
 ) {
-    // Gradiente moderno para el TopAppBar
     val gradientColors = listOf(
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.primaryContainer
@@ -42,12 +37,10 @@ fun AppTopBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                brush = Brush.horizontalGradient(
-                    colors = gradientColors
-                )
+                brush = Brush.horizontalGradient(colors = gradientColors)
             )
     ) {
-        TopAppBar(
+        CenterAlignedTopAppBar(
             title = {
                 Text(
                     text = title,
@@ -67,7 +60,7 @@ fun AppTopBar(
                 }
             },
             actions = { actions() },
-            colors = TopAppBarDefaults.topAppBarColors(
+            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                 containerColor = Color.Transparent,
                 titleContentColor = Color.White,
                 navigationIconContentColor = Color.White,
@@ -79,12 +72,8 @@ fun AppTopBar(
 }
 
 /**
- * TopAppBar con botón de volver atrás
- * Variante conveniente para pantallas secundarias
- *
- * @param title Título a mostrar
- * @param onBackClick Acción al hacer clic en volver
- * @param actions Composable para acciones adicionales
+ * Variante del AppTopBar con botón de volver atrás
+ * Ideal para pantallas secundarias
  */
 @Composable
 fun AppTopBarWithBack(
