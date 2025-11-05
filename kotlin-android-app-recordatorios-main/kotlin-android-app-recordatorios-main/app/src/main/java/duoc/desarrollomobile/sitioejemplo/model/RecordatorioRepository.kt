@@ -1,7 +1,6 @@
 package duoc.desarrollomobile.sitioejemplo.model
 
 import duoc.desarrollomobile.sitioejemplo.data.Recordatorio
-import duoc.desarrollomobile.sitioejemplo.data.RecordatorioDao
 import kotlinx.coroutines.flow.Flow
 
 /**
